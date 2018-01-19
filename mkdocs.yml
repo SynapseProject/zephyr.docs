@@ -1,0 +1,4 @@
+site_name: Zephyr
+pages:
+- Zephyr: index.md
+theme: readthedocs
