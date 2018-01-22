@@ -2,9 +2,9 @@ site_name: Zephyr
 pages:
 - Zephyr: index.md
 - FileSystem:
-  - Introduction: filesystem/filesystem.md
-  - Utilities: filesystem/utilities.md
+  - Introduction: FileSystem/filesystem.md
+  - Utilities: FileSystem/utilities.md
   - Implementations:
-    - Windows: filesystem/windows.md
-    - Amazon S3: filesystem/amazons3.md
+    - Windows: FileSystem/windows.md
+    - Amazon S3: FileSystem/amazons3.md
 theme: readthedocs
