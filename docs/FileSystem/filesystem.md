@@ -92,7 +92,7 @@ Below is a list of Methods in a ZephyrFile object.  All methods marked "abstract
 
 New implementations can be added simply by extending the Abstract classes ZephyrFile.cs and ZephyrDirectory.cs and providing the deatils for the abstract properties and methods.  Below is a check-list of the code base objects that need to be updated or modified to support a new implementation type.
 
-* Determine new "root" or protocol identifier (see "Root or Protocol Format" sectio below)
+* Determine new "root" or protocol identifier (see "Root or Protocol Format" section below)
 * Extend ZephyrDirectory and ZephyrFile classes under seperate folder in "Implementations".
 * Implement Abstract properties and methods in each class.
 * Add new UrlTypes to Enums.cs (MyImpFile, MyImpDirectory).
