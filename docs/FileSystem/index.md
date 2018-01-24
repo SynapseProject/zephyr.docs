@@ -28,6 +28,7 @@ Below is a list of Properties in a ZephyrDirectory object.  All properties marke
 |Name|Yes|Read only property representing the name of the directory.
 |Parent|Yes|Read only property providing the full name or URL of the parent directory.
 |Root|Yes|Read only property showing the protocol, drive or share of the directory.<br>(Examples : s3://, C:\, \\localhost\c$)
+|Exists|Yes|Read only property to tell if a directory exists.
 
 ### Methods
 
@@ -37,7 +38,6 @@ Below is a list of Methods in a ZephyrDirectory object.  All methods marked "abs
 |------|--------|-----------
 |Create|Yes|Creates a ZephyrDirectory object.
 |Delete|Yes|Deletes a ZephyrDirectory object.
-|Exists|Yes|Determines if a directory exists.
 |CreateFile|Yes|Creates a ZephyrFile object of the same implementation type as the ZephyrDiretory calling it.
 |CreateDirectory|Yes|Creates a ZephyrDirectory object of the same implementation type as the ZephyrDirectory calling it.
 |GetDirectories|Yes|Returns a list of ZephyrDirectories which are direct children of the calling ZephyrDirectory.
@@ -60,6 +60,7 @@ Below is a list of Properties in a ZephyrFile object.  All properties marked "ab
 |--------|--------|-----------
 |FullName|Yes|The full name or URL for the file.
 |Name|Yes|Read only property representing the name of the file.
+|Exists|Yes|Read only property to determine if a file exists.
 |Stream|Yes|The underlying System.IO.Stream object for the file.
 |IsOpen|No|Read only property telling if the ZephyrFile is currently open.  This is done by checking the "CanRead" and "CanWrite" properties of the underlying System.IO.Stream object.
 |CanRead|No|Read only property telling if a ZephyrFile is available to read from.  This is done by checking the "CanRead" property of the underlying System.IO.Stream object.
@@ -73,7 +74,6 @@ Below is a list of Methods in a ZephyrFile object.  All methods marked "abstract
 |------|--------|-----------
 |Create|Yes|Creates a ZephyrFile object.
 |Delete|Yes|Deletes a ZephyrFile object.
-|Exists|Yes|Determines if a file exists.
 |CreateFile|Yes|Creates a ZephyrFile object of the same implementation type as the ZephyrFile calling it.
 |CreateDirectory|Yes|Creates a ZephyrDirectory object of the same implementation type as the ZephyrFile calling it.
 |Open|Yes|Opens the ZephyrFile (and the underlying Stream object) for Read or Write access.
@@ -106,7 +106,7 @@ New implementations can be added simply by extending the Abstract classes Zephyr
 |Root|Valid|Description
 |----|-----|-----------
 |s1\|\||Yes|Pipes are prefectly fine to delimit the root from the rest of the url.
-|~s2~|Yes|So are tildas.
+|s2~|Yes|So are tildes.
 |s3:|No|This is a sub-string of an already existing root for AWS S3 (s3://)
 |s4://|Yes|Doesn't already exist, so why not.
 |s5|Yes|Delimeters aren't even required (although it might get messy).

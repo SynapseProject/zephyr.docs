@@ -2,7 +2,7 @@ site_name: Zephyr
 pages:
 - Zephyr: index.md
 - FileSystem:
-  - Introduction: FileSystem/filesystem.md
+  - Introduction: FileSystem/index.md
   - Utilities: FileSystem/utilities.md
   - Implementations:
     - Windows: FileSystem/windows.md
