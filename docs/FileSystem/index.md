@@ -29,6 +29,7 @@ Below is a list of Properties in a ZephyrDirectory object.  All properties marke
 |Parent|Yes|Read only property providing the full name or URL of the parent directory.
 |Root|Yes|Read only property showing the protocol, drive or share of the directory.<br>(Examples : s3://, C:\, \\localhost\c$)
 |Exists|Yes|Read only property to tell if a directory exists.
+|IsEmpty|No|Read only property to tell if a directory is empty.
 
 ### Methods
 
@@ -45,7 +46,6 @@ Below is a list of Methods in a ZephyrDirectory object.  All methods marked "abs
 |PathCombine|Yes|Combines a list of strings into a path based on the implementation type.
 |CopyTo|No|Copies the content of one ZephyrDirectory into another ZephyrDirectory.  This is done by using the base "Stream" property of a ZephyrFile, and the "Create" methods of ZephyrFiles and ZephyrDirectories.  This allows for cross-implementation directory copies.
 |MoveTo|No|Moves the content of one ZephyrDirectory into another ZephyrDirectory.  This is done by using the base "Stream" property of a ZephyrFile, and the "Create" methods of ZephyrFiles and ZephyrDirectories.  This allows for cross-implementation directory moves.
-|IsEmpty|No|Determines if a directory is empty.  This is done by using the "GetDirectories" and "GetFiles" methods each implementation is required to support.
 |Purge|No|Deletes the contents of the ZephyrDirectory, but leaves the main directory intact.  This is done by using the "Delete" methods of both the ZephyrDirectory and ZephyrFile classes.
 
 ## ZephyrFile
