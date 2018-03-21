@@ -62,7 +62,7 @@ This algorithm uses 128 bit block size and 256 bit key size.
 ### Encrypt Action Parameters
 
 |Key|Value|Required|Description
-|-|_|:-:|-
+|-|-|:-:|-
 |data|Text to encrypt|Y|-
 |pass|Pass phrase|Y|-
 |salt|Salt value|Y|Min 8 bytes
@@ -70,12 +70,12 @@ This algorithm uses 128 bit block size and 256 bit key size.
 
 ### Decrypt Action Parameters
 
-|Key|Required|Description
-|-|:-:|-
-|data|Y|Text to decrypt
-|pass|Y|Pass phrase
-|salt|Y|Salt value. Min 8 bytes
-|iv|Y|Initialization vector. Must be 16 characters long to match the 128 bit block size used in algorithm
+|Key|Value|Required|Description
+|-|-|:-:|-
+|data|Text to decrypt|Y|
+|pass|Pass phrase|Y|
+|salt|Salt value|Y|Min 8 bytes
+|iv|Initialization vector|Y|Must be 16 characters long to match the 128 bit block size used in algorithm
 
 ## RSA
 
@@ -116,7 +116,7 @@ To use a key from key file,
 |-|-|:-:|-
 |data|Text to encrypt|Y|-
 |kcn|Key container name|N|Use either `kcn` or `keyFile`
-|keyFile|Path to public key file|N|Use either `kcn` or `keyFile`
+|keyFile|Path to key file|N|Use either `kcn` or `keyFile`
 
 ### Decrypt Action Parameters
 
@@ -134,7 +134,7 @@ To use a key from key file,
 |-|-|:-:|-
 |data|Text to decrypt|Y|-
 |kcn|Key container name|N|Use either `kcn` or `keyFile`
-|keyFile|Path to public key file|N|Use either `kcn` or `keyFile`
+|keyFile|Path to key file|N|Use either `kcn` or `keyFile`
 
 
 # Examples
