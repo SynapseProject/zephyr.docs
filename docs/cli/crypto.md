@@ -45,15 +45,15 @@ Syntax:
 
 ### Encode Action Parameter
 
-|Key|Value|Required?|Description
-|-|-|:-:|-
-|data|Text to encode|Y|-
+|Key|Required|Description
+|-|:-:|-
+|data|Yes|Text to encode
 
 ### Decode Action Parameter
 
-|Key|Value|Required?|Description
-|-|-|:-:|-
-|data|Text to decode|Y|-
+|Key|Required|Description
+|-|:-:|-
+|data|Yes|Text to decode
 
 ## Rijndael
 
@@ -61,21 +61,21 @@ This algorithm uses 128 bit block size and 256 bit key size.
 
 ### Encrypt Action Parameters
 
-|Key|Value|Required|Description
-|-|-|:-:|-
-|data|Text to encrypt|Y|-
-|pass|Pass phrase|Y|-
-|salt|Salt value|Y|Min 8 bytes
-|iv|Initialization vector|Y|Must be 16 characters long to match the 128 bit block size used in algorithm
+|Key|Required|Description
+|-|:-:|-
+|data|Yes|Text to encrypt
+|pass|Yes|Pass phrase
+|salt|Yes|Salt value. Min 8 bytes
+|iv|Yes|Initialization vector. Must be 16 characters long to match the 128 bit block size used in algorithm
 
 ### Decrypt Action Parameters
 
-|Key|Value|Required|Description
-|-|-|:-:|-
-|data|Text to decrypt|Y|
-|pass|Pass phrase|Y|
-|salt|Salt value|Y|Min 8 bytes
-|iv|Initialization vector|Y|Must be 16 characters long to match the 128 bit block size used in algorithm
+|Key|Required|Description
+|-|:-:|-
+|data|Yes|Text to decrypt
+|pass|Yes|Pass phrase
+|salt|Yes|Salt value. Min 8 bytes
+|iv|Yes|Initialization vector. Must be 16 characters long to match the 128 bit block size used in algorithm
 
 ## RSA
 
@@ -94,10 +94,12 @@ To store the key pair in XML files,
     * `{filePath}.pubPriv` contains public/private keys
     * `{filePath}.pubOnly` holds just the public key
 
-|Key|Value|Required?|Description
-|-|-|:-:|-
-|kcn|Key container name|N|Use either `kcn` or `keyFile` or both
-|keyFile|Path to key files|N|Use either `kcn` or `keyFile` or both
+|Key|Required|Description
+|-|:-:|-
+|kcn|No<sup>1</sup>|Key container name
+|keyFile|No<sup>1</sup>|Path to key files
+
+<sup>1</sup> Specify one of the keys or both.
 
 ### Encrypt Action Parameters
 
@@ -112,11 +114,13 @@ To use a key from key file,
 
 `kcn` has a higher priority over `keyPath`. So when both parameter keys are supplied, `keyFile` will be ignored.
 
-|Key|Value|Required?|Description
-|-|-|:-:|-
-|data|Text to encrypt|Y|-
-|kcn|Key container name|N|Use either `kcn` or `keyFile`
-|keyFile|Path to key file|N|Use either `kcn` or `keyFile`
+|Key|Required|Description
+|-|:-:|-
+|data|Yes|Text to encrypt
+|kcn|No<sup>2</sup>|Key container name
+|keyFile|No<sup>2</sup>|Path to key file
+
+<sup>2</sup> One of the keys (`kcn` or `keyFile`) must be supplied.
 
 ### Decrypt Action Parameters
 
@@ -130,25 +134,30 @@ To use a key from key file,
 
 `kcn` has a higher priority over `keyPath`. So when both parameter keys are supplied, `keyFile` will be ignored.
 
-|Key|Value|Required?|Description
-|-|-|:-:|-
-|data|Text to decrypt|Y|-
-|kcn|Key container name|N|Use either `kcn` or `keyFile`
-|keyFile|Path to key file|N|Use either `kcn` or `keyFile`
+|Key|Required|Description
+|-|:-:|-
+|data|Yes|Text to decrypt
+|kcn|No<sup>3</sup>|Key container name
+|keyFile|No<sup>3</sup>|Path to key file
 
+<sup>3</sup> One of the keys (`kcn` or `keyFile`) must be supplied.
 
 # Examples
 
 ```dos
 zephyr crypto base64 encode data:"text to encrypt"
 
-zephyr crypto rijndael encrypt data:"text to encrypt" pass:password salt:saltvalue iv:1234567890123456
+zephyr crypto rijndael encrypt data:"text to encrypt"
+    pass:password salt:saltvalue iv:1234567890123456
 
-zephyr crypto rsa genkey kcn:samplecontainer keyfile:c:\temp\sample
+zephyr crypto rsa genkey kcn:samplecontainer
+    keyfile:c:\temp\sample
 
-zephyr crypto rsa encrypt data:"text to encrypt" kcn:samplecontainer
+zephyr crypto rsa encrypt data:"text to encrypt"
+    kcn:samplecontainer
 
-zephyr crypto rsa encrypt data:"text to encrypt" keyFile:c:\temp\sample.pubOnly
+zephyr crypto rsa encrypt data:"text to encrypt"
+    keyFile:c:\temp\sample.pubOnly
 
 ```
 
