@@ -44,7 +44,7 @@ The "SSEMethod" property on the AwsClient class specifies which server side encr
 * **AWS256** : Use AES 256 server side encryption.
 * **AWSKMS** : Use AWS Key Management Service for server side encryption.
 
-#### Storage Class 
+### Storage Class 
 
 The "StorageClass" property on the AwsClient class specifies which tier of storage should be used when putting objects into an S3 Bucket.  The available values are : 
 
