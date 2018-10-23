@@ -32,3 +32,24 @@ The exception to this rule is if you use the "US East (N. Virginia)" region to c
 Credentials can be provide explicitly into the classes, or can be pulled from the user's AWS credentails and config files.  If neither of those exist, it will look for environment-based variables representing the current user and their credentials.
 
 See [Configuring AWS Credentails](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/net-dg-config-creds.html) for details and other way to establish Amazon credentails to the AwsClient.
+
+### Encryption
+
+Encryption of the objects put into a bucket can be specified at the client level.  By default, the objects will be placed into the bucket using the value specified on the client.
+
+#### Server Side Encryption Method (SSEMethod)
+
+The "SSEMethod" property on the AwsClient class specifies which server side encryption method should be used when putting objects into an S3 bucket.  The availible values are :
+
+* **AWS256** : Use AES 256 server side encryption.
+* **AWSKMS** : Use AWS Key Management Service for server side encryption.
+
+#### Storage Class 
+
+The "StorageClass" property on the AwsClient class specifies which tier of storage should be used when putting objects into an S3 Bucket.  The available values are : 
+
+* **Standard** : The default storage class for S3.  Durability 99.999999999%; Availability 99.99% over a given year.
+* **ReducedRedundancy** : Provides the same availability as standard, but at a lower durability.  Durability 99.99%; Availability 99.99% over a given year.
+* **Glacier** : Used for objects stored in Amazon Glacier (objects that are for archival purpose and where GET operations are rare).  Durability 99.999999999%
+* **StandardInfrequentAccess** : Used for objects that are long-lived and less frequently acccessed, like backups and older data.  Durability 99.999999999%; Availability 99.9% over a given year.
+* **OneZoneInfrequentAccess** : Similar to StandardInfrequentAccess, but only stores data within one Availability Zone in a given region.  Durability 99.999999999%; Availability 99% over a given year.
